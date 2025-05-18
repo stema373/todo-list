@@ -1,70 +1,125 @@
-# Getting Started with Create React App
+# Todo List Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A full-stack todo list application built with React, TypeScript, Express, and PostgreSQL. Features user authentication via Firebase and supports dark/light theme modes.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- User Authentication (Email/Password)
+- Create, Read, Update, and Delete tasks
+- Mark tasks as complete/incomplete
+- Dark/Light theme toggle
+- Responsive design
+- Secure data storage
+- Real-time updates
 
-### `npm start`
+## Tech Stack
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Frontend
+- React
+- TypeScript
+- React Router for navigation
+- Styled Components for styling
+- Axios for API requests
+- Firebase Authentication
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Backend
+- Express.js
+- PostgreSQL database
+- Prisma ORM
+- Firebase Admin SDK
+- TypeScript
 
-### `npm test`
+## Prerequisites
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Before you begin, ensure you have installed:
+- Node.js (v14 or higher)
+- PostgreSQL
+- npm or yarn
 
-### `npm run build`
+## Setup Instructions
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. **Clone the repository**
+   ```bash
+   git clone <your-repository-url>
+   cd todo-app
+   ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+3. **Set up environment variables**
+   
+   Create a `.env` file in the root directory with the following variables:
+   ```
+   # Firebase Configuration
+   REACT_APP_FIREBASE_API_KEY=your_api_key
+   REACT_APP_FIREBASE_AUTH_DOMAIN=your_auth_domain
+   REACT_APP_FIREBASE_PROJECT_ID=your_project_id
+   REACT_APP_FIREBASE_STORAGE_BUCKET=your_storage_bucket
+   REACT_APP_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
+   REACT_APP_FIREBASE_APP_ID=your_app_id
 
-### `npm run eject`
+   # Database Configuration
+   DATABASE_URL="postgresql://username:password@localhost:5432/todo_list"
+   ```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+4. **Set up the database**
+   ```bash
+   npx prisma migrate dev
+   ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+5. **Start the development servers**
+   ```bash
+   # Run both frontend and backend
+   npm run dev
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+   # Or run them separately
+   npm start        # Frontend only
+   npm run server   # Backend only
+   ```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Usage
 
-## Learn More
+1. Register a new account or log in with existing credentials
+2. Add new tasks using the input field
+3. Click on a task to mark it as complete/incomplete
+4. Use the edit button to modify task text
+5. Use the remove button to delete tasks
+6. Toggle between light and dark themes using the theme button
+7. Access your profile and logout through the welcome message
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Project Structure
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
+todo-app/
+├── src/                  # Frontend React application
+│   ├── components/       # React components
+│   ├── App.tsx          # Main application component
+│   └── ...
+├── routes/              # Backend API routes
+├── prisma/              # Database schema and migrations
+├── server.ts            # Express server setup
+└── package.json         # Project dependencies
+```
 
-### Code Splitting
+## Security
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- All sensitive information is stored in environment variables
+- Firebase Authentication for secure user management
+- PostgreSQL for reliable data persistence
+- API routes are protected with Firebase authentication
+- CORS enabled for security
 
-### Analyzing the Bundle Size
+## Contributing
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-### Making a Progressive Web App
+## License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project is licensed under the MIT License - see the LICENSE file for details.
