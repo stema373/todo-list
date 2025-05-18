@@ -1,0 +1,204 @@
+.App {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  position: relative;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.toggle-theme-button {
+  align-self: flex-start;
+}
+
+.sign-up-button {
+  margin-left: auto;
+}
+
+.top-login-button {
+  align-self: flex-end;
+}
+
+.dark {
+  background-color: #1f1e33;
+  color: #fff;
+}
+
+.light {
+  background-color: #f0f2f5;
+  color: #000;
+}
+
+.title {
+  cursor: pointer;
+}
+
+.form-group {
+  max-width: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 10px auto;
+}
+
+.login-input.custom-input {
+  flex-grow: 1;
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-right: 0px;
+  word-break: break-word;
+  width: 375px;
+}
+
+.register-button {
+  flex-grow: 1;
+  min-width: 200px;
+}
+
+.registration-container {
+  border: 1px solid #808080;
+  padding: 20px;
+  border-radius: 5px;
+  max-width: 400px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
+.registration-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.registration-container.light {
+  background-color: #fff;
+}
+
+.registration-box.light {
+  background-color: #fff;
+}
+
+.registration-container.dark {
+  background-color: #0e0d22;
+}
+
+.registration-box.dark {
+  background-color: #0e0d22;
+}
+
+.login-button {
+  flex-grow: 1;
+}
+
+.home-button {
+  flex-grow: 1;
+}
+
+h1 {
+  text-align: center;
+}
+
+h2 {
+  text-align: center;
+}
+
+.add-task-form {
+  margin-bottom: 20px;
+  display: flex;
+  max-width: 20.833%;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+}
+
+.add-task-input {
+  min-width: 275px;
+}
+
+.add-task-button {
+  min-width: 100px;
+}
+
+form {
+  margin-bottom: 20px;
+  display: flex;
+}
+
+input[type="text"] {
+  flex-grow: 1;
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  padding: 8px 16px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  max-width: 60%;
+  margin: 0 auto;
+}
+
+li {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+span {
+  flex-grow: 1;
+}
+
+input[type="text"],
+label {
+  margin-right: 10px;
+  word-break: break-word;
+}
+
+label {
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+label:hover {
+  background-color: #808080;
+}
+
+button+button {
+  margin-left: 5px;
+}
+
+.error-message {
+  color: red;
+}

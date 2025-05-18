@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+        "resolveJsonModule": true,
+        "target": "es2018",
+        "lib": ["es2018", "dom"],
+        "strict": true,
+        "esModuleInterop": true,
+        "moduleResolution": "node",
+        "skipLibCheck": true,
+        "jsx": "react",
+        "baseUrl": "."
+    },
+    "include": ["src/*.ts", "server.ts", "src/*.tsx", "index.d.ts"],
+    "exclude": ["node_modules"]
+}
