@@ -93,7 +93,7 @@ Before you begin, ensure you have installed:
 ## Project Structure
 
 ```
-todo-app/
+todo-list/
 ├── src/                  # Frontend React application
 │   ├── components/       # React components
 │   ├── App.tsx          # Main application component
