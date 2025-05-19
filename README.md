@@ -95,7 +95,6 @@ Before you begin, ensure you have installed:
 ```
 todo-list/
 ├── src/                  # Frontend React application
-│   ├── components/       # React components
 │   ├── App.tsx          # Main application component
 │   └── ...
 ├── routes/              # Backend API routes
