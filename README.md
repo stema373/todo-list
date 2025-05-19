@@ -15,12 +15,13 @@ A full-stack todo list application built with React, TypeScript, Express, and Po
 ## Tech Stack
 
 ### Frontend
-- React
+- React 18
 - TypeScript
-- React Router for navigation
+- React Router v6 for navigation
 - Styled Components for styling
 - Axios for API requests
 - Firebase Authentication
+- FirebaseUI for authentication UI
 
 ### Backend
 - Express.js
@@ -28,6 +29,8 @@ A full-stack todo list application built with React, TypeScript, Express, and Po
 - Prisma ORM
 - Firebase Admin SDK
 - TypeScript
+- JWT for authentication
+- CORS enabled
 
 ## Prerequisites
 
@@ -49,9 +52,10 @@ Before you begin, ensure you have installed:
    npm install
    ```
 
-3. **Set up environment variables**
-   
-   Create a `.env` file in the root directory with the following variables:
+3. **Set up Firebase**
+   - Create a Firebase project in the Firebase Console
+   - Download your Firebase Admin SDK service account key and save it as `todo-list-525d9-firebase-adminsdk-20gpn-4638f89e9b.json` in the root directory
+   - Create a `.env` file in the root directory with the following variables:
    ```
    # Firebase Configuration
    REACT_APP_FIREBASE_API_KEY=your_api_key
@@ -93,14 +97,15 @@ Before you begin, ensure you have installed:
 ## Project Structure
 
 ```
-todo-list/
+todo-app/
 ├── src/                  # Frontend React application
-│   ├── App.tsx          # Main application component
-│   └── ...
 ├── routes/              # Backend API routes
 ├── prisma/              # Database schema and migrations
-├── server.ts            # Express server setup
-└── package.json         # Project dependencies
+├── public/              # Static files
+├── server.ts           # Express server setup
+├── firebase-config.ts  # Firebase configuration
+├── package.json        # Project dependencies
+└── tsconfig.json      # TypeScript configuration
 ```
 
 ## Security
@@ -110,6 +115,7 @@ todo-list/
 - PostgreSQL for reliable data persistence
 - API routes are protected with Firebase authentication
 - CORS enabled for security
+- JWT for secure token-based authentication
 
 ## Contributing
 

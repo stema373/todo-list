@@ -1,6 +1,6 @@
 import express, { Request, Response } from 'express';
 import { PrismaClient } from '@prisma/client';
-import admin from 'firebase-admin';
+import { admin } from '../firebase-config';
 
 const router = express.Router();
 const prisma = new PrismaClient();

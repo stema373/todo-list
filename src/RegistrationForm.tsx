@@ -33,16 +33,17 @@ function RegistrationForm({ theme, setIsLoggedIn }: { theme: string; setIsLogged
     }
   };
 
-  const createUser = () => {
+  const createUser = (uid: string) => {
+    console.log('Creating user with username:', username, 'and uid:', uid);
     axios
-      .post('http://localhost:5000/register', { username, email, googleSignIn: false }, { headers: { 'content-type': 'application/json' } })
+      .post('http://localhost:5000/register', { username, email, uid }, { headers: { 'content-type': 'application/json' } })
       .then(response => {
         setErrorMessage('');
-        console.log(response.data.message);
+        console.log('User creation response:', response.data);
       })
       .catch(error => {
         setErrorMessage(error.response.data.message);
-        console.error(error.response.data.message);
+        console.error('User creation error:', error.response.data.message);
       });
   };
 
@@ -58,11 +59,11 @@ function RegistrationForm({ theme, setIsLoggedIn }: { theme: string; setIsLogged
     }
 
     try {
-      createUser();
       const auth = getAuth();
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
       const idToken = await user.getIdToken();
+      createUser(user.uid);
       setCookie("idToken", idToken, 1)
       console.log('Signed up user:', user);
       setIsLoggedIn(true);
