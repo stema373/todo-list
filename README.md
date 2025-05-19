@@ -97,7 +97,7 @@ Before you begin, ensure you have installed:
 ## Project Structure
 
 ```
-todo-app/
+todo-list/
 ├── src/                  # Frontend React application
 ├── routes/              # Backend API routes
 ├── prisma/              # Database schema and migrations
