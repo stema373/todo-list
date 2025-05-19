@@ -54,7 +54,7 @@ Before you begin, ensure you have installed:
 
 3. **Set up Firebase**
    - Create a Firebase project in the Firebase Console
-   - Download your Firebase Admin SDK service account key and save it as `todo-list-525d9-firebase-adminsdk-20gpn-4638f89e9b.json` in the root directory
+   - Download your Firebase Admin SDK service account key and save it as a json file in the root directory
    - Create a `.env` file in the root directory with the following variables:
    ```
    # Firebase Configuration
