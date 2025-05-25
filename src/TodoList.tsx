@@ -14,7 +14,16 @@ function TodoList() {
   const [editingTask, setEditingTask] = useState<Task | null>(null);
 
   useEffect(() => {
-    fetchTasks();
+    const idToken = getCookie('idToken');
+    if (idToken) {
+      fetchTasks();
+    } else {
+      // Load tasks from localStorage if not logged in
+      const localTasks = localStorage.getItem('localTasks');
+      if (localTasks) {
+        setTasks(JSON.parse(localTasks));
+      }
+    }
   }, []);
 
   const fetchTasks = async () => {
@@ -33,43 +42,67 @@ function TodoList() {
     if (newTask.trim() === '') return;
 
     const idToken = getCookie('idToken');
-    if (!idToken) return;
-
-    try {
-      await axios.post(`http://localhost:5000/tasks/${idToken}`, {
-        title: newTask
-      });
+    if (idToken) {
+      // If logged in, add to server
+      try {
+        await axios.post(`http://localhost:5000/tasks/${idToken}`, {
+          title: newTask
+        });
+        setNewTask('');
+        fetchTasks();
+      } catch (error) {
+        console.error('Error adding task:', error);
+      }
+    } else {
+      // If not logged in, add to localStorage
+      const newLocalTask = {
+        id: Date.now(), // Use timestamp as temporary ID
+        title: newTask,
+        completion: false
+      };
+      const updatedTasks = [...tasks, newLocalTask];
+      setTasks(updatedTasks);
+      localStorage.setItem('localTasks', JSON.stringify(updatedTasks));
       setNewTask('');
-      fetchTasks();
-    } catch (error) {
-      console.error('Error adding task:', error);
     }
   };
 
   const handleUpdateTask = async (task: Task) => {
     const idToken = getCookie('idToken');
-    if (!idToken) return;
-
-    try {
-      await axios.put(`http://localhost:5000/tasks/${idToken}/${task.id}`, {
-        title: task.title,
-        completion: task.completion
-      });
-      fetchTasks();
-    } catch (error) {
-      console.error('Error updating task:', error);
+    if (idToken) {
+      try {
+        await axios.put(`http://localhost:5000/tasks/${idToken}/${task.id}`, {
+          title: task.title,
+          completion: task.completion
+        });
+        fetchTasks();
+      } catch (error) {
+        console.error('Error updating task:', error);
+      }
+    } else {
+      // Update in localStorage
+      const updatedTasks = tasks.map(t => 
+        t.id === task.id ? task : t
+      );
+      setTasks(updatedTasks);
+      localStorage.setItem('localTasks', JSON.stringify(updatedTasks));
     }
   };
 
   const handleDeleteTask = async (taskId: number) => {
     const idToken = getCookie('idToken');
-    if (!idToken) return;
-
-    try {
-      await axios.delete(`http://localhost:5000/tasks/${idToken}/${taskId}`);
-      fetchTasks();
-    } catch (error) {
-      console.error('Error deleting task:', error);
+    if (idToken) {
+      try {
+        await axios.delete(`http://localhost:5000/tasks/${idToken}/${taskId}`);
+        fetchTasks();
+      } catch (error) {
+        console.error('Error deleting task:', error);
+      }
+    } else {
+      // Delete from localStorage
+      const updatedTasks = tasks.filter(t => t.id !== taskId);
+      setTasks(updatedTasks);
+      localStorage.setItem('localTasks', JSON.stringify(updatedTasks));
     }
   };
 

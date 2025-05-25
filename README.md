@@ -21,7 +21,6 @@ A full-stack todo list application built with React, TypeScript, Express, and Po
 - Styled Components for styling
 - Axios for API requests
 - Firebase Authentication
-- FirebaseUI for authentication UI
 
 ### Backend
 - Express.js
