@@ -72,10 +72,12 @@ function App() {
   useEffect(() => {
     const checkUsername = async () => {
       const idToken = getCookie('idToken');
+      console.log('Checking username with token:', idToken ? 'Token exists' : 'No token');
       if (idToken) {
         try {
           const response = await axios.get(`http://localhost:5000/getUsername/${idToken}`);
           const { username } = response.data;
+          console.log('Username received from server:', username);
           setUsername(username);
           setIsLoggedIn(true);
         } catch (error) {

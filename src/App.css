@@ -103,6 +103,19 @@
   flex-grow: 1;
 }
 
+.logout-button {
+  flex-grow: 1;
+}
+
+.delete-account-button {
+  flex-grow: 1;
+  background-color: red;
+}
+
+.delete-account-button:hover {
+  background-color: darkred;
+}
+
 .home-button {
   flex-grow: 1;
 }

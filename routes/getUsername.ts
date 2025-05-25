@@ -1,29 +1,31 @@
 import express, { Request, Response } from 'express';
-import { PrismaClient } from '@prisma/client';
-import admin from 'firebase-admin';
-const serviceAccount = require('../todo-list-525d9-firebase-adminsdk-20gpn-4638f89e9b.json');
+import { PrismaClient, Prisma } from '@prisma/client';
+import { admin } from '../firebase-config';
 
 const router = express.Router();
 const prisma = new PrismaClient();
-
-admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
-});
 
 router.get('/:idToken', async (req: Request, res: Response) => {
   const { idToken } = req.params;
 
   try {
     const decodedToken = await admin.auth().verifyIdToken(idToken as string);
-    const email = decodedToken.email;
+    const uid = decodedToken.uid;
+    console.log('Getting username for uid:', uid);
 
-    const user = await prisma.user.findUnique({
-      where: { email },
-    });
+    type UserResult = {
+      username: string;
+      id: number;
+    }[];
+    const user = await prisma.$queryRaw<UserResult>`
+      SELECT username, id FROM "User" WHERE uid = ${uid}
+    `;
 
-    if (user) {
-      res.json({ username: user.username });
+    if (user && user[0]) {
+      console.log('Found user:', user[0]);
+      res.json({ username: user[0].username, id: user[0].id });
     } else {
+      console.log('User not found for uid:', uid);
       res.status(404).json({ error: 'User not found' });
     }
   } catch (error) {
