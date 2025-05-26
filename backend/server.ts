@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import express, { Request, Response } from 'express';
 import cors from 'cors';
 import getUsername from './routes/getUsername';
@@ -22,7 +23,7 @@ app.use('/register', userRegistration);
 app.use('/tasks', tasks);
 app.use('/deleteAccount', deleteAccount);
 
-const port = 5000;
+const port = process.env.PORT || 5000;
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });

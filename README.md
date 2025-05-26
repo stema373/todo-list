@@ -38,6 +38,35 @@ Before you begin, ensure you have installed:
 - PostgreSQL
 - npm or yarn
 
+## Environment Variables
+
+### Backend (.env)
+Create a `.env` file in the `backend` directory and add the following variables:
+```
+DATABASE_URL="postgresql://username:password@localhost:5432/todo_list"
+FIREBASE_PROJECT_ID="your-project-id"
+FIREBASE_CLIENT_EMAIL="your-client-email"
+FIREBASE_PRIVATE_KEY="your-private-key"
+PORT=5000
+```
+
+### Frontend (.env)
+Create a `.env` file in the `frontend` directory:
+```
+REACT_APP_FIREBASE_API_KEY="your-api-key"
+REACT_APP_FIREBASE_AUTH_DOMAIN="your-project-id.firebaseapp.com"
+REACT_APP_FIREBASE_PROJECT_ID="your-project-id"
+REACT_APP_FIREBASE_STORAGE_BUCKET="your-project-id.appspot.com"
+REACT_APP_FIREBASE_MESSAGING_SENDER_ID="your-sender-id"
+REACT_APP_FIREBASE_APP_ID="your-app-id"
+```
+
+You can get these values from your Firebase Console:
+1. Go to Project Settings
+2. Under "General" tab, scroll down to "Your apps"
+3. If you haven't already, create a web app
+4. Copy the configuration values
+
 ## Project Structure
 
 ```
