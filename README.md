@@ -90,7 +90,17 @@ todo-list/
    npm run install:all
    ```
 
-2. Start both frontend and backend in development mode:
+2. Set up the database:
+   ```bash
+   cd backend
+   npx prisma migrate dev
+   ```
+   This will:
+   - Create the database if it doesn't exist
+   - Apply all pending migrations
+   - Generate the Prisma Client
+
+3. Start both frontend and backend in development mode:
    ```bash
    npm start
    ```
@@ -99,12 +109,12 @@ todo-list/
    - Frontend on http://localhost:3000
    - Backend on http://localhost:5000
 
-3. To run frontend only:
+4. To run frontend only:
    ```bash
    npm run start:frontend
    ```
 
-4. To run backend only:
+5. To run backend only:
    ```bash
    npm run start:backend
    ```
