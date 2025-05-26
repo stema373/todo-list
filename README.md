@@ -2,6 +2,10 @@
 
 A full-stack todo list application built with React, TypeScript, Express, and PostgreSQL. Features user authentication via Firebase and supports dark/light theme modes.
 
+## Live Demo
+
+Try the application live: [Live Demo](https://stema373.github.io/todo-list)
+
 ## Features
 
 - User Authentication (Email/Password)
@@ -179,3 +183,4 @@ The build process:
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
+
