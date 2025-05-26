@@ -1,15 +1,14 @@
 {
     "compilerOptions": {
-        "resolveJsonModule": true,
         "target": "es2018",
-        "lib": ["es2018", "dom"],
+        "module": "commonjs",
         "strict": true,
         "esModuleInterop": true,
-        "moduleResolution": "node",
         "skipLibCheck": true,
-        "jsx": "react",
+        "forceConsistentCasingInFileNames": true,
+        "resolveJsonModule": true,
+        "moduleResolution": "node",
         "baseUrl": "."
     },
-    "include": ["src/*.ts", "server.ts", "src/*.tsx", "index.d.ts"],
     "exclude": ["node_modules"]
 }

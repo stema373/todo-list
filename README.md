@@ -38,50 +38,77 @@ Before you begin, ensure you have installed:
 - PostgreSQL
 - npm or yarn
 
+## Project Structure
+
+```
+todo-list/
+├── frontend/           # React frontend application
+│   ├── public/        # Static files
+│   ├── src/          # React source code
+│   └── package.json  # Frontend dependencies
+├── backend/           # Express backend application
+│   ├── routes/       # API routes
+│   ├── prisma/       # Database schema and migrations
+│   ├── dist/         # Compiled JavaScript files
+│   └── package.json  # Backend dependencies
+└── package.json      # Root package.json for managing both applications
+```
+
 ## Setup Instructions
 
-1. **Clone the repository**
+1. Install dependencies for all packages:
    ```bash
-   git clone https://github.com/stema373/todo-list
-   cd todo-app
+   npm run install:all
    ```
 
-2. **Install dependencies**
+2. Start both frontend and backend in development mode:
    ```bash
-   npm install
+   npm start
    ```
 
-3. **Set up Firebase**
-   - Create a Firebase project in the Firebase Console
-   - Download your Firebase Admin SDK service account key and save it as a json file in the root directory
-   - Create a `.env` file in the root directory with the following variables:
-   ```
-   # Firebase Configuration
-   REACT_APP_FIREBASE_API_KEY=your_api_key
-   REACT_APP_FIREBASE_AUTH_DOMAIN=your_auth_domain
-   REACT_APP_FIREBASE_PROJECT_ID=your_project_id
-   REACT_APP_FIREBASE_STORAGE_BUCKET=your_storage_bucket
-   REACT_APP_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
-   REACT_APP_FIREBASE_APP_ID=your_app_id
+   This will start:
+   - Frontend on http://localhost:3000
+   - Backend on http://localhost:5000
 
-   # Database Configuration
-   DATABASE_URL="postgresql://username:password@localhost:5432/todo_list"
-   ```
-
-4. **Set up the database**
+3. To run frontend only:
    ```bash
-   npx prisma migrate dev
+   npm run start:frontend
    ```
 
-5. **Start the development servers**
+4. To run backend only:
    ```bash
-   # Run both frontend and backend
-   npm run dev
-
-   # Or run them separately
-   npm start        # Frontend only
-   npm run server   # Backend only
+   npm run start:backend
    ```
+
+## Development
+
+- Frontend code is in the `frontend` directory
+- Backend code is in the `backend` directory
+- Each directory has its own `package.json` for managing dependencies
+- The root `package.json` contains scripts to run both applications together
+
+## Building for Production
+
+The project can be built for production in several ways:
+
+1. Build both frontend and backend:
+   ```bash
+   npm run build
+   ```
+
+2. Build frontend only:
+   ```bash
+   npm run build:frontend
+   ```
+
+3. Build backend only:
+   ```bash
+   npm run build:backend
+   ```
+
+The build process:
+- Frontend: Creates an optimized production build in `frontend/build`
+- Backend: Compiles TypeScript to JavaScript in `backend/dist`
 
 ## Usage
 
@@ -92,20 +119,6 @@ Before you begin, ensure you have installed:
 5. Use the remove button to delete tasks
 6. Toggle between light and dark themes using the theme button
 7. Access your profile and logout through the welcome message
-
-## Project Structure
-
-```
-todo-list/
-├── src/                  # Frontend React application
-├── routes/              # Backend API routes
-├── prisma/              # Database schema and migrations
-├── public/              # Static files
-├── server.ts           # Express server setup
-├── firebase-config.ts  # Firebase configuration
-├── package.json        # Project dependencies
-└── tsconfig.json      # TypeScript configuration
-```
 
 ## Security
 

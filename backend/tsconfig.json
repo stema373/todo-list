@@ -1,0 +1,15 @@
+{
+    "extends": "../tsconfig.json",
+    "compilerOptions": {
+        "outDir": "./dist",
+        "rootDir": ".",
+        "sourceMap": true,
+        "module": "NodeNext",
+        "moduleResolution": "NodeNext"
+    },
+    "include": [
+        "**/*.ts",
+        "prisma/**/*.ts"
+    ],
+    "exclude": ["node_modules", "dist"]
+} 
